@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EC Home Inspections — Bright &amp; Approachable Concept</title>
+<style>
+  :root{
+    --blue:#1E6FD9;
+    --blue-deep:#124f9f;
+    --blue-tint:#EAF2FE;
+    --offwhite:#F5F8FE;
+    --orange:#F97316;
+    --orange-deep:#DD5F05;
+    --orange-tint:#FFEDD9;
+    --ink:#0F2A44;
+    --ink-soft:#3E5875;
+    --white:#FFFFFF;
+    --radius-lg:24px;
+    --radius-md:20px;
+    --radius-sm:16px;
+    --shadow-soft:0 12px 30px -12px rgba(15,42,68,0.22);
+    --shadow-btn:0 10px 24px -8px rgba(249,115,22,0.55);
+    font-size:16px;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family: ui-rounded, 'SF Pro Rounded', -apple-system, 'Segoe UI', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{margin:0 0 .5em 0; font-weight:800; letter-spacing:-0.02em;}
+  p{margin:0 0 1em 0;}
+  ul,ol{margin:0;padding:0;}
+  .container{
+    width:100%;
+    max-width:1120px;
+    margin:0 auto;
+    padding-left:20px;
+    padding-right:20px;
+  }
+  section{padding:56px 0;}
+  @media (min-width:768px){ section{padding:88px 0;} }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+    outline:3px solid var(--orange-deep);
+    outline-offset:2px;
+    border-radius:8px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5em;
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+    font-weight:700;
+    font-size:1.05rem;
+    padding:16px 32px;
+    border-radius:999px;
+    text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:translateY(1px) scale(.99);}
+  .btn-orange{
+    background:linear-gradient(180deg,var(--orange),var(--orange-deep));
+    color:var(--white);
+    box-shadow:var(--shadow-btn);
+  }
+  .btn-orange:hover{transform:translateY(-2px); box-shadow:0 16px 30px -8px rgba(249,115,22,0.6);}
+  .btn-blue{
+    background:var(--white);
+    color:var(--blue-deep);
+    box-shadow:0 10px 24px -10px rgba(18,79,159,0.35);
+  }
+  .btn-blue:hover{transform:translateY(-2px);}
+  .btn-outline{
+    background:transparent;
+    color:var(--blue);
+    border:2px solid var(--blue);
+    padding:14px 30px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid rgba(15,42,68,0.08);
+  }
+  header .bar{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px 20px;
+    padding:14px 20px;
+    max-width:1120px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:1.15rem;
+    color:var(--ink);
+    text-decoration:none;
+    margin-right:auto;
+  }
+  .logo{width:34px;height:auto;}
+  header nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    background:var(--blue-tint);
+    padding:6px;
+    border-radius:999px;
+  }
+  header nav a{
+    text-decoration:none;
+    color:var(--blue-deep);
+    font-weight:600;
+    font-size:.92rem;
+    padding:8px 16px;
+    border-radius:999px;
+    transition:background-color .15s ease, color .15s ease;
+  }
+  header nav a:hover{background:var(--white); color:var(--orange-deep);}
+  .call-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--ink);
+    color:var(--white);
+    text-decoration:none;
+    font-weight:700;
+    font-size:.92rem;
+    padding:10px 18px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .call-pill:hover{background:var(--blue-deep);}
+
+  /* ---------- Hero ---------- */
+  #hero{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(160deg,var(--blue) 0%,var(--blue-deep) 100%);
+    color:var(--white);
+    padding:72px 0 64px;
+  }
+  #hero .container{
+    position:relative;
+    z-index:2;
+    display:grid;
+    gap:28px;
+    max-width:720px;
+  }
+  #hero h1{
+    font-size:clamp(2.3rem, 6vw, 3.6rem);
+    line-height:1.05;
+    color:var(--white);
+  }
+  #hero p.lede{
+    font-size:clamp(1.05rem,2.4vw,1.25rem);
+    color:#DCEAFF;
+    max-width:52ch;
+  }
+  #hero .hero-badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:.85rem;
+    font-weight:700;
+  }
+  #hero .badge{
+    background:rgba(255,255,255,0.16);
+    border:1px solid rgba(255,255,255,0.35);
+    padding:8px 16px;
+    border-radius:999px;
+  }
+
+  /* signature graphic: sunrise over a rooftop, echoing the logo's roof-slope */
+  .sunrise{
+    position:absolute;
+    top:-10%;
+    right:-12%;
+    width:min(560px, 70vw);
+    height:auto;
+    z-index:1;
+    opacity:0.95;
+  }
+  @media (max-width:640px){
+    .sunrise{ width:78vw; top:-6%; right:-22%; opacity:0.6; }
+  }
+
+  /* ---------- Section band alternation ---------- */
+  .band-off{background:var(--offwhite);}
+  .band-white{background:var(--white);}
+
+  .eyebrow{
+    display:inline-block;
+    font-size:.8rem;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--orange-deep);
+    background:var(--orange-tint);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  h2{font-size:clamp(1.7rem,4vw,2.4rem); color:var(--ink);}
+  .lede-dark{color:var(--ink-soft); font-size:1.05rem; max-width:62ch;}
+
+  /* ---------- Cards / forms ---------- */
+  .card{
+    background:var(--white);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-soft);
+    padding:32px;
+  }
+  form{display:grid; gap:16px; margin-top:20px;}
+  .field-row{display:grid; gap:16px;}
+  @media (min-width:640px){
+    .field-row.cols-2{grid-template-columns:1fr 1fr;}
+    .field-row.cols-3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  label{display:grid; gap:6px; font-weight:700; font-size:.92rem; color:var(--ink);}
+  input, select, textarea{
+    font-family:inherit;
+    font-size:1rem;
+    padding:14px 16px;
+    border-radius:var(--radius-sm);
+    border:2px solid var(--blue-tint);
+    background:var(--offwhite);
+    color:var(--ink);
+  }
+  input:focus, select:focus, textarea:focus{
+    border-color:var(--blue);
+    outline:none;
+    background:var(--white);
+  }
+  textarea{min-height:120px; resize:vertical;}
+  form .btn{justify-self:start; margin-top:6px;}
+  .fine-print{color:var(--ink-soft); font-size:.9rem; margin-top:16px;}
+
+  /* ---------- Services chips ---------- */
+  .chip-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:28px;
+  }
+  @media (min-width:640px){ .chip-grid{grid-template-columns:repeat(3,1fr);} }
+  @media (min-width:960px){ .chip-grid{grid-template-columns:repeat(4,1fr);} }
+  .chip{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--blue-tint);
+    border-radius:var(--radius-sm);
+    padding:16px 18px;
+    font-weight:700;
+    font-size:.98rem;
+    color:var(--blue-deep);
+  }
+  .chip svg{flex:none; width:24px; height:24px;}
+
+  /* ---------- How it works ---------- */
+  .steps{
+    display:grid;
+    gap:22px;
+    margin-top:32px;
+    list-style:none;
+    counter-reset:none;
+  }
+  @media (min-width:768px){ .steps{grid-template-columns:repeat(3,1fr);} }
+  .step-card{
+    position:relative;
+    background:var(--white);
+    border-radius:var(--radius-lg);
+    padding:32px 26px 26px;
+    box-shadow:var(--shadow-soft);
+    overflow:hidden;
+  }
+  .step-num{
+    position:absolute;
+    top:-14px;
+    right:8px;
+    font-size:5.2rem;
+    font-weight:800;
+    color:var(--blue-tint);
+    z-index:0;
+    line-height:1;
+    user-select:none;
+  }
+  .step-card h3{
+    position:relative;
+    z-index:1;
+    font-size:1.2rem;
+    color:var(--blue-deep);
+    margin-bottom:.35em;
+  }
+  .step-card p{position:relative; z-index:1; color:var(--ink-soft); margin:0;}
+
+  /* ---------- About ---------- */
+  #about .container{
+    display:grid;
+    gap:32px;
+    align-items:center;
+  }
+  @media (min-width:768px){ #about .container{grid-template-columns:180px 1fr;} }
+  .avatar-blob{
+    width:150px;
+    height:150px;
+    border-radius:38% 62% 60% 40% / 45% 40% 60% 55%;
+    background:linear-gradient(150deg,var(--blue),var(--orange));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--white);
+    font-size:2.6rem;
+    font-weight:800;
+    margin:0 auto;
+    box-shadow:var(--shadow-soft);
+  }
+  #about h2{margin-bottom:.4em;}
+  #about p{color:var(--ink-soft); font-size:1.05rem; max-width:64ch;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:#CFE0F5;
+    padding:44px 0;
+    font-size:.92rem;
+  }
+  footer .container{
+    display:grid;
+    gap:10px;
+  }
+  footer strong{color:var(--white); font-size:1.05rem;}
+  footer a.trec{
+    display:inline-block;
+    margin-top:10px;
+    color:var(--white);
+    background:var(--blue);
+    padding:10px 20px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:700;
+    width:fit-content;
+  }
+  footer a.trec:hover{background:var(--blue-deep);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#hero">
+      <svg class="logo" viewBox="0 0 96 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EC Home Inspections logo">
+        <path fill="#1E6FD9" d="M48 4 L10 26 L10 84 L44 84 L44 72 L22 72 L22 56 L40 56 L40 44 L22 44 L22 32 L48 17 Z"/>
+        <path fill="#F97316" d="M48 4 L86 26 L86 84 L52 84 L52 72 L74 72 L74 32 L48 17 Z"/>
+      </svg>
+      <span>EC Home Inspections</span>
+    </a>
+    <nav>
+      <a href="#book">Book</a>
+      <a href="#services">Services</a>
+      <a href="#report">Your Report</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call-pill" href="tel:+13615550100">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" fill="currentColor"/></svg>
+      (361) 555-0100
+    </a>
+  </div>
+</header>
+
+<section id="hero">
+  <svg class="sunrise" viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="sunGrad" cx="50%" cy="45%" r="55%">
+        <stop offset="0%" stop-color="#FFD8A8"/>
+        <stop offset="55%" stop-color="#F97316"/>
+        <stop offset="100%" stop-color="#DD5F05" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="330" cy="150" r="150" fill="url(#sunGrad)"/>
+    <path d="M60 300 L250 150 L440 300 Z" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M100 300 L100 230" stroke="rgba(255,255,255,0.55)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M400 300 L400 230" stroke="rgba(255,255,255,0.55)" stroke-width="10" stroke-linecap="round"/>
+  </svg>
+  <div class="container">
+    <h1>Know your home before you buy it.</h1>
+    <p class="lede">Professional, TREC-licensed home inspections serving Sinton, Corpus Christi, and the Coastal Bend.</p>
+    <div>
+      <a class="btn btn-orange" href="#book">Schedule Your Inspection</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">TREC License #27120</span>
+      <span class="badge">Digital report in 24 hrs</span>
+      <span class="badge">Edna shows up, every time</span>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="band-off">
+  <div class="container">
+    <span class="eyebrow">Step one</span>
+    <h2>Book online in minutes</h2>
+    <div class="card">
+      <form>
+        <div class="field-row cols-2">
+          <label>Property address
+            <input type="text" name="address" placeholder="123 Main St, Sinton, TX">
+          </label>
+          <label>Preferred date
+            <input type="date" name="date">
+          </label>
+        </div>
+        <div class="field-row cols-2">
+          <label>Preferred time
+            <select name="time">
+              <option>Morning</option>
+              <option>Afternoon</option>
+            </select>
+          </label>
+          <label>Your name
+            <input type="text" name="name" placeholder="Full name">
+          </label>
+        </div>
+        <div class="field-row cols-2">
+          <label>Phone
+            <input type="tel" name="phone" placeholder="(361) 555-0100">
+          </label>
+          <label>Email
+            <input type="email" name="email" placeholder="you@example.com">
+          </label>
+        </div>
+        <button class="btn btn-orange" type="button">Request Appointment</button>
+      </form>
+      <p class="fine-print">You&rsquo;ll receive a confirmation within one business day.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="band-white">
+  <div class="container">
+    <span class="eyebrow">Thorough, top to bottom</span>
+    <h2>What&rsquo;s inspected</h2>
+    <p class="lede-dark">Every inspection covers all components in the TREC Standards of Practice:</p>
+    <ul class="chip-grid">
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Foundation</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Grading &amp; Drainage</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Roof Covering</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Roof Structure &amp; Attics</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Walls</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Doors &amp; Windows</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Floors &amp; Ceilings</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>HVAC</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Electrical</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Plumbing</li>
+      <li class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1E6FD9"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Built-In Appliances</li>
+    </ul>
+  </div>
+</section>
+
+<section id="how" class="band-off">
+  <div class="container">
+    <span class="eyebrow">Simple by design</span>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li class="step-card">
+        <span class="step-num">01</span>
+        <h3>Book</h3>
+        <p>Pick a day and time that works for you.</p>
+      </li>
+      <li class="step-card">
+        <span class="step-num">02</span>
+        <h3>Inspect</h3>
+        <p>Edna walks the property top to bottom, typically 2&ndash;3 hours.</p>
+      </li>
+      <li class="step-card">
+        <span class="step-num">03</span>
+        <h3>Report</h3>
+        <p>Your full digital report, usually within 24 hours.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="report" class="band-white">
+  <div class="container">
+    <span class="eyebrow">Already a client</span>
+    <h2>Already had your inspection?</h2>
+    <p class="lede-dark">Access your report online any time.</p>
+    <div class="card" style="max-width:520px;">
+      <form>
+        <label>Email address
+          <input type="email" name="report-email" placeholder="you@example.com">
+        </label>
+        <button class="btn btn-orange" type="button">Find My Report</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="band-off">
+  <div class="container">
+    <div class="avatar-blob" aria-hidden="true">EC</div>
+    <div>
+      <span class="eyebrow">Who you&rsquo;ll meet</span>
+      <h2>Meet Edna Cavazos</h2>
+      <p>EC Home Inspections is owned and operated by Edna Cavazos, a TREC-licensed
+      professional inspector (License #27120) serving Sinton and the greater Coastal
+      Bend. When you book with EC, Edna is who shows up &mdash; no subcontractors, no
+      hand-offs, and a report you can actually read.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="band-white">
+  <div class="container">
+    <span class="eyebrow">We&rsquo;d love to hear from you</span>
+    <h2>Get in touch</h2>
+    <div class="card">
+      <form>
+        <div class="field-row cols-3">
+          <label>Name
+            <input type="text" name="contact-name" placeholder="Full name">
+          </label>
+          <label>Email
+            <input type="email" name="contact-email" placeholder="you@example.com">
+          </label>
+          <label>Phone
+            <input type="tel" name="contact-phone" placeholder="(361) 555-0100">
+          </label>
+        </div>
+        <label>Message
+          <textarea name="message" placeholder="How can we help?"></textarea>
+        </label>
+        <button class="btn btn-orange" type="button">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>EC Home Inspections</strong>
+    <span>10577 CR 2349, Sinton, TX</span>
+    <span>(361) 555-0100 &middot; edna@echomeinspectionstx.com</span>
+    <span>Texas Real Estate Commission License #27120</span>
+    <a class="trec" href="https://www.trec.texas.gov/forms/consumer-protection-notice">TREC Consumer Protection Notice</a>
+  </div>
+</footer>
+
+</body>
+</html>
