@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EC Home Inspections — Design Concepts</title>
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --ink:#1F2937;
+    --ink-muted:#5B6472;
+    --line:#E1E5EA;
+    --blue:#1E6FD9;
+    --orange:#F97316;
+    --radius:8px;
+    --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji';
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.55;
+  }
+  a{color:inherit;}
+
+  a:focus-visible,button:focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition-duration:0.001ms !important;}
+  }
+
+  .wrap{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  /* Header */
+  header{
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:20px 20px;
+  }
+  .logo{width:32px;height:auto;flex:none;}
+  .wordmark{
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:0.01em;
+    color:var(--ink);
+  }
+
+  /* Main intro */
+  main{
+    padding:40px 0 56px;
+  }
+  h1{
+    margin:0 0 14px;
+    font-size:clamp(1.5rem, 4.5vw, 2.1rem);
+    line-height:1.25;
+    font-weight:700;
+    color:var(--ink);
+    text-align:center;
+  }
+  .intro{
+    margin:0 auto 36px;
+    max-width:52ch;
+    text-align:center;
+    color:var(--ink-muted);
+    font-size:1.05rem;
+  }
+
+  /* Concept cards */
+  .concepts{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .concepts > li{min-width:0;}
+  @media (min-width:640px){
+    .concepts{grid-template-columns:1fr 1fr;}
+  }
+
+  .card{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    min-height:44px;
+    padding:22px;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  .card:hover{
+    border-color:var(--blue);
+    box-shadow:0 4px 14px rgba(30,111,217,0.12);
+    transform:translateY(-1px);
+  }
+  .card:active{transform:translateY(0);}
+
+  .card-num{
+    flex:none;
+    font-weight:700;
+    font-size:1.3rem;
+    color:var(--orange);
+    line-height:1.5;
+    min-width:2ch;
+  }
+  .card-copy{
+    flex:1 1 auto;
+    min-width:0;
+    font-size:0.98rem;
+    color:var(--ink-muted);
+    line-height:1.5;
+  }
+  .card-copy strong{
+    display:inline;
+    color:var(--ink);
+  }
+  .card-arrow{
+    flex:none;
+    width:20px;
+    height:20px;
+    margin-top:2px;
+    color:var(--ink-muted);
+    transition:transform .15s ease, color .15s ease;
+  }
+  .card:hover .card-arrow{
+    color:var(--blue);
+    transform:translateX(3px);
+  }
+
+  @media (max-width:374px){
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 96 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EC Home Inspections logo">
+      <path fill="#1E6FD9" d="M48 4 L10 26 L10 84 L44 84 L44 72 L22 72 L22 56 L40 56 L40 44 L22 44 L22 32 L48 17 Z"/>
+      <path fill="#F97316" d="M48 4 L86 26 L86 84 L52 84 L52 72 L74 72 L74 32 L48 17 Z"/>
+    </svg>
+    <span class="wordmark">EC Home Inspections</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>EC Home Inspections — Design Concepts</h1>
+    <p class="intro">Four looks for your new website — tap any card to view it. Same content, different personality.</p>
+
+    <ul class="concepts">
+      <li>
+        <a class="card" href="01-established-trusted.html">
+          <span class="card-num" aria-hidden="true">01</span>
+          <span class="card-copy"><strong>Established &amp; Trusted</strong> — Classic and professional, like a firm that&rsquo;s been at it for decades.</span>
+          <svg class="card-arrow" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="02-bright-approachable.html">
+          <span class="card-num" aria-hidden="true">02</span>
+          <span class="card-copy"><strong>Bright &amp; Approachable</strong> — Friendly and modern, built to put first-time buyers at ease.</span>
+          <svg class="card-arrow" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="03-coastal-bend-local.html">
+          <span class="card-num" aria-hidden="true">03</span>
+          <span class="card-copy"><strong>Coastal Bend Local</strong> — Warm and personal, leading with Edna and the community she serves.</span>
+          <svg class="card-arrow" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="04-precision-thorough.html">
+          <span class="card-num" aria-hidden="true">04</span>
+          <span class="card-copy"><strong>Precision &amp; Thorough</strong> — Technical and exacting, with the inspection checklist front and center.</span>
+          <svg class="card-arrow" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</main>
+
+</body>
+</html>
