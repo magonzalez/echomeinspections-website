@@ -84,19 +84,6 @@
     box-shadow:var(--shadow-btn);
   }
   .btn-orange:hover{transform:translateY(-2px); box-shadow:0 16px 30px -8px rgba(249,115,22,0.6);}
-  .btn-blue{
-    background:var(--white);
-    color:var(--blue-deep);
-    box-shadow:0 10px 24px -10px rgba(18,79,159,0.35);
-  }
-  .btn-blue:hover{transform:translateY(-2px);}
-  .btn-outline{
-    background:transparent;
-    color:var(--blue);
-    border:2px solid var(--blue);
-    padding:14px 30px;
-  }
-
   /* ---------- Header ---------- */
   header{
     position:sticky;
@@ -165,7 +152,7 @@
     overflow:hidden;
     background:linear-gradient(160deg,var(--blue) 0%,var(--blue-deep) 100%);
     color:var(--white);
-    padding:72px 0 64px;
+    padding:76px 0 84px;
   }
   #hero .container{
     position:relative;
@@ -184,20 +171,6 @@
     color:#DCEAFF;
     max-width:52ch;
   }
-  #hero .hero-badges{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    font-size:.85rem;
-    font-weight:700;
-  }
-  #hero .badge{
-    background:rgba(255,255,255,0.16);
-    border:1px solid rgba(255,255,255,0.35);
-    padding:8px 16px;
-    border-radius:999px;
-  }
-
   /* signature graphic: sunrise over a rooftop, echoing the logo's roof-slope */
   .sunrise{
     position:absolute;
@@ -216,18 +189,6 @@
   .band-off{background:var(--offwhite);}
   .band-white{background:var(--white);}
 
-  .eyebrow{
-    display:inline-block;
-    font-size:.8rem;
-    font-weight:800;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--orange-deep);
-    background:var(--orange-tint);
-    padding:6px 14px;
-    border-radius:999px;
-    margin-bottom:14px;
-  }
   h2{font-size:clamp(1.7rem,4vw,2.4rem); color:var(--ink);}
   .lede-dark{color:var(--ink-soft); font-size:1.05rem; max-width:62ch;}
 
@@ -416,17 +377,11 @@
     <div>
       <a class="btn btn-orange" href="#book">Schedule Your Inspection</a>
     </div>
-    <div class="hero-badges">
-      <span class="badge">TREC License #27120</span>
-      <span class="badge">Digital report in 24 hrs</span>
-      <span class="badge">Edna shows up, every time</span>
-    </div>
   </div>
 </section>
 
 <section id="book" class="band-off">
   <div class="container">
-    <span class="eyebrow">Step one</span>
     <h2>Book online in minutes</h2>
     <div class="card">
       <form>
@@ -466,7 +421,6 @@
 
 <section id="services" class="band-white">
   <div class="container">
-    <span class="eyebrow">Thorough, top to bottom</span>
     <h2>What&rsquo;s inspected</h2>
     <p class="lede-dark">Every inspection covers all components in the TREC Standards of Practice:</p>
     <ul class="chip-grid">
@@ -487,23 +441,22 @@
 
 <section id="how" class="band-off">
   <div class="container">
-    <span class="eyebrow">Simple by design</span>
     <h2>How it works</h2>
     <ol class="steps">
       <li class="step-card">
-        <span class="step-num">01</span>
+        <span class="step-num" aria-hidden="true">01</span>
         <h3>Book</h3>
-        <p>Pick a day and time that works for you.</p>
+        <p>&mdash; Pick a day and time that works for you.</p>
       </li>
       <li class="step-card">
-        <span class="step-num">02</span>
+        <span class="step-num" aria-hidden="true">02</span>
         <h3>Inspect</h3>
-        <p>Edna walks the property top to bottom, typically 2&ndash;3 hours.</p>
+        <p>&mdash; Edna walks the property top to bottom, typically 2&ndash;3 hours.</p>
       </li>
       <li class="step-card">
-        <span class="step-num">03</span>
+        <span class="step-num" aria-hidden="true">03</span>
         <h3>Report</h3>
-        <p>Your full digital report, usually within 24 hours.</p>
+        <p>&mdash; Your full digital report, usually within 24 hours.</p>
       </li>
     </ol>
   </div>
@@ -511,7 +464,6 @@
 
 <section id="report" class="band-white">
   <div class="container">
-    <span class="eyebrow">Already a client</span>
     <h2>Already had your inspection?</h2>
     <p class="lede-dark">Access your report online any time.</p>
     <div class="card" style="max-width:520px;">
@@ -529,7 +481,6 @@
   <div class="container">
     <div class="avatar-blob" aria-hidden="true">EC</div>
     <div>
-      <span class="eyebrow">Who you&rsquo;ll meet</span>
       <h2>Meet Edna Cavazos</h2>
       <p>EC Home Inspections is owned and operated by Edna Cavazos, a TREC-licensed
       professional inspector (License #27120) serving Sinton and the greater Coastal
@@ -541,7 +492,6 @@
 
 <section id="contact" class="band-white">
   <div class="container">
-    <span class="eyebrow">We&rsquo;d love to hear from you</span>
     <h2>Get in touch</h2>
     <div class="card">
       <form>
