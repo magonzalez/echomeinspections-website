@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EC Home Inspections — Precision &amp; Thorough Concept</title>
+<style>
+  :root{
+    --bg:#16202B;
+    --surface:#1C2836;
+    --surface-2:#202E3D;
+    --text:#E8EEF6;
+    --text-muted:#A9B9CC;
+    --blue:#4C8DFF;
+    --blue-dim:#2E4A6E;
+    --orange:#F97316;
+    --border:rgba(232,238,246,.14);
+    --border-strong:rgba(76,141,255,.4);
+    --font-body:-apple-system, 'Segoe UI', sans-serif;
+    --font-mono:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background-color:var(--bg);
+    background-image:
+      linear-gradient(rgba(76,141,255,.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(76,141,255,.09) 1px, transparent 1px),
+      linear-gradient(rgba(76,141,255,.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(76,141,255,.16) 1px, transparent 1px);
+    background-size:20px 20px, 20px 20px, 100px 100px, 100px 100px;
+    background-position:-1px -1px;
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.55;
+    min-height:100vh;
+  }
+
+  img,svg{ max-width:100%; display:block; }
+  a{ color:var(--blue); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:2px;
+  }
+
+  .wrap{ width:100%; max-width:1080px; margin-inline:auto; padding-inline:clamp(16px,4vw,32px); }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.72rem;
+    color:var(--blue);
+  }
+
+  h1,h2{ font-family:var(--font-body); font-weight:700; margin:0 0 .6em; letter-spacing:-.01em; }
+  h1{ font-size:clamp(1.9rem, 5vw, 3rem); line-height:1.12; }
+  h2{ font-size:clamp(1.35rem, 3.4vw, 1.85rem); }
+  p{ margin:0 0 1em; color:var(--text-muted); max-width:62ch; }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(22,32,43,.94);
+    border-bottom:1px solid var(--border);
+  }
+  header .wrap{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    flex-wrap:wrap;
+    padding-block:12px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; min-width:0; }
+  .brand .logo{ width:30px; height:auto; flex-shrink:0; }
+  .brand span{
+    font-family:var(--font-mono);
+    font-size:.82rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  header nav{ display:flex; gap:18px; flex-wrap:wrap; font-family:var(--font-mono); font-size:.74rem; letter-spacing:.04em; text-transform:uppercase; }
+  header nav a{ color:var(--text-muted); text-decoration:none; }
+  header nav a:hover{ color:var(--blue); }
+  header > .wrap > a[href^="tel:"]{
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    color:var(--blue);
+    text-decoration:none;
+    border:1px solid var(--blue-dim);
+    padding:6px 10px;
+    border-radius:2px;
+    white-space:nowrap;
+  }
+  header > .wrap > a[href^="tel:"]:hover{ border-color:var(--blue); }
+
+  section{ padding-block:clamp(40px,7vw,84px); border-bottom:1px solid var(--border); }
+  section:last-of-type{ border-bottom:none; }
+
+  /* ---------- hero ---------- */
+  #hero p{ font-size:1.05rem; max-width:56ch; }
+  .btn-primary{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:.85rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:#16202B;
+    background:var(--orange);
+    border:1px solid var(--orange);
+    padding:13px 22px;
+    border-radius:2px;
+    font-weight:600;
+  }
+  .btn-primary:hover{ background:#ffb08a; border-color:#ffb08a; }
+
+  /* ---------- forms ---------- */
+  form{ margin-top:22px; max-width:640px; }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+  .field label{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--text-muted);
+  }
+  .field input, .field select, .field textarea{
+    background:var(--surface);
+    border:1px solid var(--border-strong);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:.95rem;
+    padding:10px 12px;
+    border-radius:2px;
+    width:100%;
+  }
+  .field textarea{ resize:vertical; min-height:100px; }
+  .field-row{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:14px 10px; }
+  .field-row .field{ flex:1 1 160px; margin-bottom:0; }
+  .field-row .sep{ color:var(--border-strong); font-family:var(--font-mono); padding-bottom:10px; }
+  .field-row + .field{ margin-top:16px; }
+  .btn-secondary{
+    font-family:var(--font-mono);
+    font-size:.82rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--bg);
+    background:var(--blue);
+    border:1px solid var(--blue);
+    padding:11px 20px;
+    border-radius:2px;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .btn-secondary:hover{ background:#7fadff; border-color:#7fadff; }
+
+  /* ---------- services / checklist centerpiece ---------- */
+  .checklist{
+    list-style:none;
+    margin:26px 0 0;
+    padding:0;
+    max-width:660px;
+    border-top:1px solid var(--border-strong);
+  }
+  .checklist li{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 4px;
+    border-bottom:1px solid var(--border);
+  }
+  .chk-icon{ width:22px; height:22px; flex-shrink:0; }
+  .chk-num{
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    color:var(--text-muted);
+    width:2ch;
+    text-align:right;
+    flex-shrink:0;
+  }
+  .chk-label{
+    font-family:var(--font-mono);
+    font-size:.92rem;
+    font-weight:600;
+    letter-spacing:.01em;
+    color:var(--text);
+  }
+
+  /* ---------- how it works ---------- */
+  #how ol{ list-style:none; margin:26px 0 0; padding:0; max-width:640px; }
+  #how li{
+    display:flex;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid var(--border);
+  }
+  #how li:first-child{ border-top:1px solid var(--border); }
+  .step-num{
+    font-family:var(--font-mono);
+    color:var(--blue);
+    font-size:.95rem;
+    flex-shrink:0;
+    width:3ch;
+  }
+  #how strong{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.04em; font-size:.92rem; }
+  #how p{ margin:0; display:inline; color:var(--text-muted); }
+  #how li p{ margin-top:4px; display:block; }
+
+  /* ---------- about ---------- */
+  #about p{ max-width:68ch; font-size:1rem; }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--surface);
+    padding-block:32px;
+    font-family:var(--font-mono);
+    font-size:.82rem;
+    color:var(--text-muted);
+  }
+  footer p{ margin:0 0 .5em; color:var(--text-muted); max-width:none; }
+  footer a{ color:var(--blue); }
+  footer .sep{ color:var(--border-strong); }
+
+  @media (max-width: 560px){
+    header nav{ order:3; width:100%; }
+    .field-row .sep{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 96 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EC Home Inspections logo">
+        <path fill="#4C8DFF" d="M48 4 L10 26 L10 84 L44 84 L44 72 L22 72 L22 56 L40 56 L40 44 L22 44 L22 32 L48 17 Z"/>
+        <path fill="#F97316" d="M48 4 L86 26 L86 84 L52 84 L52 72 L74 72 L74 32 L48 17 Z"/>
+      </svg>
+      <span>EC Home Inspections</span>
+    </div>
+    <nav>
+      <a href="#book">Book</a> <a href="#services">Services</a> <a href="#report">Your Report</a> <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+13615550100">(361) 555-0100</a>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="wrap">
+    <h1>Know your home before you buy it.</h1>
+    <p>Professional, TREC-licensed home inspections serving Sinton, Corpus Christi, and the Coastal Bend.</p>
+    <a class="btn-primary" href="#book">Schedule Your Inspection</a>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <h2>Book online in minutes</h2>
+    <form>
+      <div class="field">
+        <label for="f-address">Property address</label>
+        <input id="f-address" type="text" name="address">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-date">Preferred date</label>
+          <input id="f-date" type="date" name="date">
+        </div>
+        <div class="field">
+          <label for="f-time">Preferred time</label>
+          <select id="f-time" name="time">
+            <option>Morning</option>
+            <option>Afternoon</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" type="text" name="name">
+        </div>
+        <span class="sep" aria-hidden="true">·</span>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" type="tel" name="phone">
+        </div>
+        <span class="sep" aria-hidden="true">·</span>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" type="email" name="email">
+        </div>
+      </div>
+      <button type="button" class="btn-secondary">Request Appointment</button>
+    </form>
+    <p>You&rsquo;ll receive a confirmation within one business day.</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2>What&rsquo;s inspected</h2>
+    <p>Every inspection covers all components in the TREC Standards of Practice:</p>
+    <ul class="checklist">
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">01</span>
+        <span class="chk-label">Foundation</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">02</span>
+        <span class="chk-label">Grading &amp; Drainage</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">03</span>
+        <span class="chk-label">Roof Covering</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">04</span>
+        <span class="chk-label">Roof Structure &amp; Attics</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">05</span>
+        <span class="chk-label">Walls</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">06</span>
+        <span class="chk-label">Doors &amp; Windows</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">07</span>
+        <span class="chk-label">Floors &amp; Ceilings</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">08</span>
+        <span class="chk-label">HVAC</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">09</span>
+        <span class="chk-label">Electrical</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">10</span>
+        <span class="chk-label">Plumbing</span>
+      </li>
+      <li>
+        <svg class="chk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="2" fill="none" stroke="#F97316" stroke-width="2"/>
+          <path d="M6 12.5 L10 16.5 L18 7.5" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span class="chk-num">11</span>
+        <span class="chk-label">Built-In Appliances</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <ol>
+      <li>
+        <span class="step-num">01</span>
+        <span><strong>Book</strong> &mdash; Pick a day and time that works for you.</span>
+      </li>
+      <li>
+        <span class="step-num">02</span>
+        <span><strong>Inspect</strong> &mdash; Edna walks the property top to bottom, typically 2&ndash;3 hours.</span>
+      </li>
+      <li>
+        <span class="step-num">03</span>
+        <span><strong>Report</strong> &mdash; Your full digital report, usually within 24 hours.</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="report">
+  <div class="wrap">
+    <h2>Already had your inspection?</h2>
+    <p>Access your report online any time.</p>
+    <form>
+      <div class="field">
+        <label for="f-report-email">Email address</label>
+        <input id="f-report-email" type="email" name="email">
+      </div>
+      <button type="button" class="btn-secondary">Find My Report</button>
+    </form>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Meet Edna Cavazos</h2>
+    <p>EC Home Inspections is owned and operated by Edna Cavazos, a TREC-licensed
+    professional inspector (License #27120) serving Sinton and the greater Coastal
+    Bend. When you book with EC, Edna is who shows up &mdash; no subcontractors, no
+    hand-offs, and a report you can actually read.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <form>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-c-name">Name</label>
+          <input id="f-c-name" type="text" name="name">
+        </div>
+        <span class="sep" aria-hidden="true">·</span>
+        <div class="field">
+          <label for="f-c-email">Email</label>
+          <input id="f-c-email" type="email" name="email">
+        </div>
+        <span class="sep" aria-hidden="true">·</span>
+        <div class="field">
+          <label for="f-c-phone">Phone</label>
+          <input id="f-c-phone" type="tel" name="phone">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-c-message">Message</label>
+        <textarea id="f-c-message" name="message"></textarea>
+      </div>
+      <button type="button" class="btn-secondary">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>EC Home Inspections <span class="sep">&middot;</span> 10577 CR 2349, Sinton, TX</p>
+    <p><a href="tel:+13615550100">(361) 555-0100</a> <span class="sep">&middot;</span> <a href="mailto:edna@echomeinspectionstx.com">edna@echomeinspectionstx.com</a></p>
+    <p>Texas Real Estate Commission License #27120</p>
+    <p><a href="https://www.trec.texas.gov/forms/consumer-protection-notice">TREC Consumer Protection Notice</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
