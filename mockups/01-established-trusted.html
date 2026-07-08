@@ -187,6 +187,10 @@
     padding:56px 0;
   }
   section.alt{background:var(--bg-alt);}
+  /* Thin 1px hairline rule between adjacent sections (per direction spec).
+     var(--line) reads clearly on both white and #F7F9FC backgrounds; the
+     navy hero gets no top rule (it follows the header's own border-bottom). */
+  section + section{border-top:1px solid var(--line);}
   section h2{
     font-size:clamp(1.4rem, 3vw, 1.85rem);
   }
@@ -417,17 +421,17 @@
     <span class="section-rule"></span>
     <p>Every inspection covers all components in the TREC Standards of Practice:</p>
     <ul class="service-list">
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Foundation</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Grading &amp; Drainage</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Roof Covering</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Roof Structure &amp; Attics</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Walls</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Doors &amp; Windows</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Floors &amp; Ceilings</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>HVAC</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Electrical</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Plumbing</li>
-      <li><svg class="check-icon"><use href="#icon-check"/></svg>Built-In Appliances</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Foundation</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Grading &amp; Drainage</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Roof Covering</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Roof Structure &amp; Attics</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Walls</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Doors &amp; Windows</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Floors &amp; Ceilings</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>HVAC</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Electrical</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Plumbing</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Built-In Appliances</li>
     </ul>
   </div>
 </section>
