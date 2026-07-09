@@ -140,9 +140,14 @@
 
   /* Hero */
   #hero{
-    background:var(--navy);
+    /* Dusk home photo (Pexels #106399, see docs/image-credits.md) under a deep
+       navy veil — the veil keeps text AA-readable and the palette restrained. */
+    background:
+      linear-gradient(rgba(16,40,74,0.90), rgba(16,40,74,0.84)),
+      url("assets/hero01.jpg") center 38%/cover no-repeat,
+      var(--navy);
     color:#fff;
-    padding:64px 0 60px;
+    padding:84px 0 80px;
   }
   #hero .hero-inner{
     max-width:640px;

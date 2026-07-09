@@ -65,8 +65,17 @@ the only variable between them:
    Consumer Protection Notice link
 
 Placeholder content rules: phone number and email use obvious placeholders
-(e.g. "(361) 555-0100"); photography is replaced by CSS/SVG treatments — no
-stock photos, to avoid a second licensing problem.
+(e.g. "(361) 555-0100"). Photography (amended 2026-07-08, client-developer
+request): mockups 01–03 may include a small number of curated photos sourced
+only from permissive-license libraries (Pexels/Unsplash/Pixabay licenses —
+free commercial use, no attribution required), stored locally in
+`mockups/assets/` and referenced by relative path (strict single-file
+self-containment was relaxed 2026-07-08: the client-developer will host the
+mockups online, so the deliverable is now the self-contained `mockups/`
+folder). Every photo's source URL and license is recorded in
+`docs/image-credits.md`. No people presented as Edna or her staff. Mockup 04
+stays photo-free — its blueprint aesthetic is the character. Paid-license
+stock (e.g. Shutterstock) remains prohibited.
 
 ## The four directions
 
@@ -95,4 +104,5 @@ All four honor the blue/orange brand; they differ in personality:
 - Each mockup opens correctly from the filesystem with no network access
 - All four read as distinctly different at a glance, on a phone
 - The index page lets a non-technical reviewer navigate the set unaided
-- No copyrighted assets (stock logo, stock photos) appear anywhere
+- No assets appear anywhere without a license permitting free commercial use
+  (permissive-license photos must be credited in `docs/image-credits.md`)

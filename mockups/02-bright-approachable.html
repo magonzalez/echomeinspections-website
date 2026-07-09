@@ -161,6 +161,27 @@
     gap:28px;
     max-width:720px;
   }
+  .hero-photo{
+    margin:0;
+  }
+  .hero-photo img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:var(--radius-lg);
+    border:5px solid rgba(255,255,255,0.85);
+    box-shadow:var(--shadow-lg);
+  }
+  @media (min-width:900px){
+    #hero .container{
+      max-width:1100px;
+      grid-template-columns:minmax(0,1fr) 400px;
+      align-items:center;
+      column-gap:56px;
+    }
+    #hero .container > :not(.hero-photo){grid-column:1;}
+    .hero-photo{grid-column:2; grid-row:1 / span 3;}
+  }
   #hero h1{
     font-size:clamp(2.3rem, 6vw, 3.6rem);
     line-height:1.05;
@@ -377,6 +398,10 @@
     <div>
       <a class="btn btn-orange" href="#book">Schedule Your Inspection</a>
     </div>
+    <figure class="hero-photo">
+      <img src="assets/hero02.jpg" width="1100" height="733"
+           alt="Two-story home with light blue siding and a covered front porch on a sunny day">
+    </figure>
   </div>
 </section>
 
