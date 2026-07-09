@@ -49,6 +49,24 @@ will likely review on her phone.
 - `mockups/03-coastal-bend-local.html`
 - `mockups/04-precision-thorough.html`
 
+**Second round (added 2026-07-08 after competitive research):** four more
+directions inspired by 11 real inspection-industry sites the client-developer
+supplied in `docs/from-client/client-info.md` (fetched + screenshotted;
+hometeam.com screenshot supplied manually). Same content skeleton — layout,
+type, color, and photography are the variables:
+
+- `mockups/05-big-sky.html` — full-bleed photo hero, condensed caps, icon
+  trio, dark photo band (Gen X / Cap City / A-Pro / HomeTeam)
+- `mockups/06-book-it-now.html` — conversion-first: booking form card pulled
+  up into the hero, navy panels, orange CTAs (GreenWorks / Crosstown)
+- `mockups/07-boutique-duotone.html` — blue-duotone aerial hero, curved
+  organic divider, airy premium minimalism (DBL Check)
+- `mockups/08-editorial-charcoal.html` — warm charcoal + terracotta + cream,
+  serif display type, overlapping photo collage (NOMAD / HomeTeam)
+- `mockups/assets/logo*.svg` — the EC monogram extracted to standalone files
+  (canonical + per-direction recolors); all pages reference the files instead
+  of inlining the SVG
+
 ## Shared content skeleton
 
 Every mockup contains the same sections in the same order, so aesthetics are
