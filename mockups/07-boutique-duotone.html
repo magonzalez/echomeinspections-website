@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EC Home Inspections — Boutique Duotone Concept</title>
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --ink:#24303E;
+    --ink-soft:#5C6B7E;
+    --blue-deep:#173A6E;
+    --blue:#2B5FA8;
+    --line:#E3E9F1;
+    --orange:#F97316;
+    --font-display:'Helvetica Neue',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.75;
+  }
+  h1{margin:0;}
+  h2{margin:0;font-family:var(--font-body);}
+  p{margin:0 0 1em;color:var(--ink-soft);}
+  ul,ol{margin:0;padding:0;}
+  li{list-style:none;}
+  button{font-family:inherit;}
+  a{color:var(--blue);}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--orange);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition-duration:0.001ms !important;}
+  }
+
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  @media (min-width:640px){
+    .wrap{padding:0 32px;}
+  }
+
+  /* Small elegant heading treatment: the section content carries the
+     visual weight, not the h2 itself. Tiny orange dot = the one whisper
+     of the brand accent color outside the logo mark. */
+  section h2{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.15rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--blue);
+    margin-bottom:28px;
+  }
+  section h2::before{
+    content:"";
+    display:block;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--orange);
+    flex:none;
+  }
+
+  /* Header */
+  header{
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+  }
+  header .wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    padding:20px 24px;
+    text-align:center;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    max-width:100%;
+  }
+  .logo{width:30px;height:auto;flex:none;}
+  .brand span{
+    font-weight:500;
+    font-size:1.02rem;
+    color:var(--ink);
+    letter-spacing:.01em;
+  }
+  header nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 24px;
+    justify-content:center;
+  }
+  header nav a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:.86rem;
+    letter-spacing:.03em;
+    padding:6px 2px;
+    border-bottom:1px solid transparent;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  header nav a:hover, header nav a:focus-visible{
+    color:var(--blue);
+    border-color:var(--blue);
+  }
+  header .phone-link{
+    color:var(--blue);
+    font-size:.9rem;
+    text-decoration:none;
+    white-space:nowrap;
+    letter-spacing:.02em;
+  }
+  header .phone-link:hover{text-decoration:underline;}
+
+  @media (min-width:720px){
+    header .wrap{
+      flex-direction:row;
+      justify-content:space-between;
+      text-align:left;
+    }
+  }
+
+  /* Hero: single blue duotone wash over the aerial rooftop photo.
+     Two separate layers keep the grayscale filter and the navy tint
+     from compositing into one filtered (and re-desaturated) blob. */
+  #hero{
+    position:relative;
+    overflow:hidden;
+    color:#fff;
+    padding:96px 0 132px;
+  }
+  .hero-media{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .hero-photo{
+    position:absolute;
+    inset:0;
+    background:url("assets/hero07.jpg") center 55%/cover no-repeat;
+    filter:grayscale(1) contrast(1.05) brightness(.92);
+  }
+  .hero-tint{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(15,35,70,.85) 0%, rgba(15,35,70,.74) 100%);
+    mix-blend-mode:multiply;
+  }
+  #hero .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:640px;
+    margin:0 auto;
+    text-align:center;
+  }
+  #hero h1{
+    color:#fff;
+    font-family:var(--font-display);
+    font-weight:300;
+    letter-spacing:.02em;
+    font-size:clamp(1.9rem, 5vw, 2.9rem);
+    line-height:1.25;
+    margin-bottom:20px;
+  }
+  #hero p{
+    color:rgba(255,255,255,.86);
+    font-size:1.05rem;
+    max-width:46ch;
+    margin:0 auto 34px;
+  }
+  .btn-quiet{
+    display:inline-block;
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:.95rem;
+    letter-spacing:.03em;
+    text-decoration:none;
+    color:#fff;
+    background:transparent;
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:999px;
+    padding:14px 34px;
+    transition:background-color .15s ease, border-color .15s ease;
+  }
+  .btn-quiet:hover{
+    background:rgba(255,255,255,.14);
+    border-color:#fff;
+  }
+
+  /* Organic asymmetric curve dividing hero into white — the page's
+     one deliberate signature move (not the repeating wave of mockup 03). */
+  .hero-curve{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    z-index:2;
+    line-height:0;
+  }
+  .hero-curve svg{
+    width:100%;
+    height:clamp(52px, 9vw, 110px);
+    display:block;
+  }
+
+  /* Generic section rhythm: airy, hairline-only separation, no
+     alternating backgrounds — a single quiet wash throughout. */
+  section{
+    padding:clamp(56px, 11vw, 96px) 0;
+  }
+  section + section{border-top:1px solid var(--line);}
+  section > .wrap > p:first-of-type{
+    max-width:60ch;
+    font-size:1.05rem;
+  }
+
+  /* Forms: bottom-border-only inputs, quiet navy button */
+  form{max-width:640px;}
+  .field{margin-bottom:26px;}
+  .field label{
+    display:block;
+    font-size:.76rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    font-family:inherit;
+    font-size:1rem;
+    color:var(--ink);
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line);
+    border-radius:0;
+    padding:9px 2px;
+    transition:border-color .15s ease;
+  }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible{
+    border-bottom-color:var(--blue);
+  }
+  .field textarea{resize:vertical;min-height:96px;}
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px 28px;
+  }
+  @media (min-width:560px){
+    .field-row{grid-template-columns:1fr 1fr;}
+    .field-row.cols-3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  form .note{margin-top:22px;margin-bottom:0;font-size:.92rem;}
+
+  .btn-navy{
+    display:inline-block;
+    font-family:inherit;
+    font-weight:500;
+    font-size:.95rem;
+    letter-spacing:.02em;
+    color:#fff;
+    background:var(--blue-deep);
+    border:1px solid var(--blue-deep);
+    border-radius:2px;
+    padding:13px 30px;
+    cursor:pointer;
+    transition:background-color .15s ease;
+  }
+  .btn-navy:hover{background:#0F2A52;}
+
+  /* Services: single quiet two-column list, thin blue checks */
+  .service-list{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    margin-top:8px;
+  }
+  @media (min-width:560px){
+    .service-list{grid-template-columns:1fr 1fr;column-gap:40px;}
+  }
+  .service-list li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    color:var(--ink);
+    font-size:1rem;
+  }
+  .check-icon{width:16px;height:16px;flex:none;color:var(--blue);}
+
+  /* How it works */
+  .steps{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+    margin-top:4px;
+  }
+  @media (min-width:720px){
+    .steps{grid-template-columns:1fr 1fr 1fr;}
+  }
+  .steps li{padding-top:4px;}
+  .step-num{
+    font-family:var(--font-display);
+    font-weight:300;
+    font-size:2.4rem;
+    color:var(--blue);
+    display:block;
+    line-height:1;
+    margin-bottom:12px;
+  }
+  .steps strong{color:var(--ink);font-weight:600;}
+  .steps p{margin:6px 0 0;}
+
+  /* About */
+  #about p{max-width:66ch;font-size:1.05rem;}
+
+  /* Contact */
+  #contact .field-row.contact-row{grid-template-columns:1fr;}
+  @media (min-width:640px){
+    #contact .field-row.contact-row{grid-template-columns:1fr 1fr 1fr;}
+  }
+
+  /* Footer */
+  footer{
+    background:var(--paper);
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    padding:44px 0;
+    text-align:center;
+    font-size:.88rem;
+  }
+  footer .wrap > *{margin-bottom:10px;}
+  footer .wrap > *:last-child{margin-bottom:0;}
+  footer a{color:var(--blue);}
+  footer .foot-brand{color:var(--ink);font-weight:500;}
+
+  @media (max-width:374px){
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable check glyph, referenced via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5 L9.5 18 L20 6"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img class="logo" src="assets/logo.svg" alt="" aria-hidden="true" width="48" height="44">
+      <span>EC Home Inspections</span>
+    </div>
+    <nav>
+      <a href="#book">Book</a>
+      <a href="#services">Services</a>
+      <a href="#report">Your Report</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="phone-link" href="tel:+13615550100">(361) 555-0100</a>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="hero-media" aria-hidden="true">
+    <div class="hero-photo"></div>
+    <div class="hero-tint"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <h1>Know your home before you buy it.</h1>
+    <p>Professional, TREC-licensed home inspections serving Sinton, Corpus Christi, and the Coastal Bend.</p>
+    <a class="btn-quiet" href="#book">Schedule Your Inspection</a>
+  </div>
+  <div class="hero-curve" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+      <path fill="#FFFFFF" d="M0,72 C260,130 520,8 840,46 C1100,78 1280,18 1440,42 L1440,120 L0,120 Z"/>
+    </svg>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <h2>Book online in minutes</h2>
+    <form>
+      <div class="field">
+        <label for="book-address">Property address</label>
+        <input id="book-address" type="text" name="address" autocomplete="street-address">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="book-date">Preferred date</label>
+          <input id="book-date" type="date" name="date">
+        </div>
+        <div class="field">
+          <label for="book-time">Preferred time</label>
+          <select id="book-time" name="time">
+            <option>Morning</option>
+            <option>Afternoon</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row cols-3">
+        <div class="field">
+          <label for="book-name">Your name</label>
+          <input id="book-name" type="text" name="name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="book-phone">Phone</label>
+          <input id="book-phone" type="tel" name="phone" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="book-email">Email</label>
+          <input id="book-email" type="email" name="email" autocomplete="email">
+        </div>
+      </div>
+      <button type="button" class="btn-navy">Request Appointment</button>
+    </form>
+    <p class="note">You&rsquo;ll receive a confirmation within one business day.</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2>What&rsquo;s inspected</h2>
+    <p>Every inspection covers all components in the TREC Standards of Practice:</p>
+    <ul class="service-list">
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Foundation</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Grading &amp; Drainage</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Roof Covering</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Roof Structure &amp; Attics</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Walls</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Doors &amp; Windows</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Floors &amp; Ceilings</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>HVAC</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Electrical</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Plumbing</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Built-In Appliances</li>
+    </ul>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><span class="step-num">1</span><strong>Book</strong><p>Pick a day and time that works for you.</p></li>
+      <li><span class="step-num">2</span><strong>Inspect</strong><p>Edna walks the property top to bottom, typically 2&ndash;3 hours.</p></li>
+      <li><span class="step-num">3</span><strong>Report</strong><p>Your full digital report, usually within 24 hours.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="report">
+  <div class="wrap">
+    <h2>Already had your inspection?</h2>
+    <p>Access your report online any time.</p>
+    <form>
+      <div class="field">
+        <label for="report-email">Email address</label>
+        <input id="report-email" type="email" name="email" autocomplete="email">
+      </div>
+      <button type="button" class="btn-navy">Find My Report</button>
+    </form>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Meet Edna Cavazos</h2>
+    <p>EC Home Inspections is owned and operated by Edna Cavazos, a TREC-licensed
+    professional inspector (License #27120) serving Sinton and the greater Coastal
+    Bend. When you book with EC, Edna is who shows up &mdash; no subcontractors, no
+    hand-offs, and a report you can actually read.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <form>
+      <div class="field-row contact-row">
+        <div class="field">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" type="text" name="name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" type="email" name="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="contact-phone">Phone</label>
+          <input id="contact-phone" type="tel" name="phone" autocomplete="tel">
+        </div>
+      </div>
+      <div class="field">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message"></textarea>
+      </div>
+      <button type="button" class="btn-navy">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><span class="foot-brand">EC Home Inspections</span> &middot; 10577 CR 2349, Sinton, TX</div>
+    <div>(361) 555-0100 &middot; edna@echomeinspectionstx.com</div>
+    <div>Texas Real Estate Commission License #27120</div>
+    <div><a href="https://www.trec.texas.gov/forms/consumer-protection-notice">TREC Consumer Protection Notice</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
