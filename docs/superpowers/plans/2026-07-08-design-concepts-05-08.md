@@ -61,12 +61,12 @@ Reference pattern: `<img class="logo" src="assets/logo.svg" alt="" width="48" he
 | File | Content | Assigned to |
 |------|---------|-------------|
 | `hero05.jpg` (1400×933) | suburban street, dramatic clouded sky | 05 hero background |
-| `band05.jpg` (1200×800) | craftsman house at twilight | 05 dark #report band background |
-| `photo06.jpg` (1100×733) | stone-and-siding ranch home, daylight | 06 supporting photo |
+| `band05.jpg` (1200×818) | craftsman house at twilight | 05 dark #report band background |
+| `photo06.jpg` (1100×856) | stone-and-siding ranch home, daylight | 06 supporting photo |
 | `hero07.jpg` (1400×787) | top-down aerial rooftops | 07 duotone hero |
 | `entry08.jpg` (600×900) | lantern-lit stone entrance, warm | 08 collage anchor |
-| `moody08.jpg` (513×900) | brick house, deep teal sky, hard shadow | 08 collage |
-| `dusk08.jpg` (600×900) | craftsman at dusk, lit windows | 08 collage |
+| `moody08.jpg` (535×900) | brick house, deep teal sky, hard shadow | 08 collage |
+| `dusk08.jpg` (900×600) | craftsman at dusk, lit windows | 08 collage |
 
 ---
 
