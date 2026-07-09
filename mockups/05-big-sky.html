@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EC Home Inspections &mdash; Big Sky Concept</title>
+<style>
+  :root{
+    --navy:#0F2038;
+    --scrim-top:rgba(9,20,38,.62);
+    --scrim-bottom:rgba(9,20,38,.30);
+    --band-scrim:rgba(15,32,56,.80);
+    --blue:#1E6FD9;
+    --blue-dark:#1857AD;
+    --orange:#F97316;
+    --orange-dark:#DD5F0E;
+    --ink:#16233B;
+    --ink-muted:#4A5A72;
+    --line:#DCE3EC;
+    --bg-alt:#F7F9FC;
+    --radius:6px;
+    --font-display:'Avenir Next Condensed','Arial Narrow',-apple-system,sans-serif;
+    --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:#fff;
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2{margin:0;font-weight:700;}
+  p{margin:0 0 1em;color:var(--ink-muted);}
+  a{color:var(--blue);}
+  ul,ol{margin:0;padding:0;}
+  li{list-style:none;}
+  button{font-family:inherit;}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition-duration:0.001ms !important;}
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .section-rule{
+    display:block;
+    width:56px;
+    height:4px;
+    background:var(--orange);
+    margin:16px 0 26px;
+    border-radius:2px;
+  }
+  .section-rule.on-dark{background:var(--orange);}
+
+  h2{
+    font-family:var(--font-display);
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    color:var(--navy);
+    font-size:clamp(1.6rem, 3.6vw, 2.5rem);
+  }
+  #report h2{color:#fff;}
+
+  /* Header: solid navy bar, mobile-first stacked rows to guarantee no
+     horizontal overflow at any viewport width. */
+  header{
+    background:var(--navy);
+  }
+  header .wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    padding-top:16px;
+    padding-bottom:16px;
+    text-align:center;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    max-width:100%;
+  }
+  .logo{width:36px;height:auto;flex:none;}
+  .brand span{
+    font-family:var(--font-display);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    font-weight:700;
+    font-size:1.2rem;
+    color:#fff;
+  }
+  header nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 20px;
+    justify-content:center;
+    padding-top:10px;
+    border-top:1px solid rgba(255,255,255,0.18);
+    width:100%;
+    max-width:100%;
+  }
+  header nav a{
+    color:#DCE7FA;
+    text-decoration:none;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    font-weight:600;
+    padding:8px 2px;
+    border-bottom:2px solid transparent;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  header nav a:hover, header nav a:focus-visible{
+    color:#fff;
+    border-color:var(--orange);
+  }
+  header .phone-link{
+    color:var(--orange);
+    font-weight:700;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  header .phone-link:hover{text-decoration:underline;}
+
+  @media (min-width:640px){
+    header .wrap{
+      flex-direction:row;
+      justify-content:space-between;
+      text-align:left;
+      flex-wrap:wrap;
+    }
+    header nav{
+      order:2;
+      width:auto;
+      border-top:none;
+      padding-top:0;
+    }
+  }
+
+  /* Hero: full-viewport photo with legibility scrim, content bottom-left */
+  #hero{
+    position:relative;
+    min-height:clamp(560px, 92vh, 860px);
+    display:flex;
+    align-items:flex-end;
+    background:
+      linear-gradient(var(--scrim-top), var(--scrim-bottom)),
+      url("assets/hero05.jpg") center/cover no-repeat,
+      var(--navy);
+    color:#fff;
+  }
+  #hero .hero-inner{
+    max-width:640px;
+    padding:56px 0 64px;
+  }
+  #hero h1{
+    font-family:var(--font-display);
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    font-size:clamp(2.4rem, 7vw, 4rem);
+    line-height:1.04;
+    color:#fff;
+    margin-bottom:20px;
+  }
+  #hero p{
+    color:#E3E9F3;
+    font-size:1.1rem;
+    max-width:46ch;
+    margin-bottom:30px;
+  }
+
+  .btn{
+    display:inline-block;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:.02em;
+    text-decoration:none;
+    padding:15px 32px;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:background-color .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--orange);
+    color:#fff;
+    box-shadow:0 2px 6px rgba(0,0,0,0.25);
+  }
+  .btn-primary:hover{background:var(--orange-dark);}
+  .btn-secondary{
+    background:var(--blue);
+    color:#fff;
+  }
+  .btn-secondary:hover{background:var(--blue-dark);}
+
+  /* Generic section rhythm */
+  section{padding:72px 0;}
+  section.alt{background:var(--bg-alt);}
+  section > .wrap > p:first-of-type{max-width:62ch;}
+
+  /* Forms: white cards, 1px borders, 6px radii */
+  form{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px;
+    max-width:720px;
+  }
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;
+    font-size:0.86rem;
+    color:var(--navy);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    font-family:inherit;
+    font-size:1rem;
+    padding:11px 12px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:#fff;
+    color:var(--ink);
+  }
+  .field textarea{resize:vertical;min-height:110px;}
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  @media (min-width:560px){
+    .field-row{grid-template-columns:1fr 1fr;}
+    .field-row.cols-3{grid-template-columns:1fr 1fr 1fr;}
+  }
+  form .note{margin-top:14px;margin-bottom:0;font-size:0.92rem;}
+  #book form + p{max-width:62ch;}
+
+  /* Services checklist: two-to-three column, blue check glyphs */
+  .service-list{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    border-top:1px solid var(--line);
+    margin-top:8px;
+  }
+  @media (min-width:560px){
+    .service-list{grid-template-columns:1fr 1fr;}
+  }
+  @media (min-width:860px){
+    .service-list{grid-template-columns:1fr 1fr 1fr;}
+  }
+  .service-list li{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 16px;
+    border-bottom:1px solid var(--line);
+    border-right:1px solid transparent;
+    font-weight:700;
+    color:var(--navy);
+    font-size:0.98rem;
+  }
+  @media (min-width:560px){
+    .service-list li{border-right:1px solid var(--line);}
+  }
+  .check-icon{width:20px;height:20px;flex:none;color:var(--blue);}
+
+  /* How it works: icon-value-prop trio, generous spacing */
+  .steps{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:44px;
+    margin-top:16px;
+    text-align:center;
+  }
+  @media (min-width:720px){
+    .steps{grid-template-columns:1fr 1fr 1fr;gap:48px;}
+  }
+  .step-circle{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:var(--blue);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-display);
+    font-size:1.9rem;
+    font-weight:700;
+    margin:0 auto 20px;
+  }
+  .steps p{
+    color:var(--ink-muted);
+    max-width:34ch;
+    margin:0 auto;
+  }
+  .steps strong{
+    display:block;
+    font-family:var(--font-display);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    color:var(--navy);
+    font-size:1.15rem;
+    margin-bottom:6px;
+  }
+
+  /* #report — signature dark band, twilight photo, navy scrim */
+  #report{
+    position:relative;
+    background:
+      linear-gradient(var(--band-scrim), var(--band-scrim)),
+      url("assets/band05.jpg") center/cover no-repeat,
+      var(--navy);
+    color:#fff;
+    padding:88px 0;
+  }
+  #report p{color:#E3E9F3;}
+  #report form{background:#fff;}
+  #report .field label{color:var(--navy);}
+
+  /* About / seal */
+  #about .about-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+    align-items:center;
+  }
+  @media (min-width:700px){
+    #about .about-grid{grid-template-columns:1fr 220px;}
+  }
+  #about p{max-width:64ch;}
+  .seal{width:170px;height:170px;margin:0 auto;flex:none;}
+
+  /* Contact */
+  #contact .field-row.contact-row{grid-template-columns:1fr;}
+  @media (min-width:560px){
+    #contact .field-row.contact-row{grid-template-columns:1fr 1fr 1fr;}
+  }
+
+  /* Footer */
+  footer{
+    background:var(--navy);
+    color:#C9D6E8;
+    border-top:3px solid var(--orange);
+    padding:40px 0 44px;
+    text-align:center;
+    font-size:0.92rem;
+  }
+  footer .wrap > *{margin-bottom:8px;}
+  footer .wrap > *:last-child{margin-bottom:0;}
+  footer a{color:#7EB0F2;}
+  footer .foot-brand{
+    font-family:var(--font-display);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    color:#fff;
+    font-size:1.1rem;
+    font-weight:700;
+  }
+
+  @media (max-width:374px){
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable check glyph, referenced via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5 L9.5 18 L20 6"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img class="logo" src="assets/logo.svg" alt="" aria-hidden="true" width="48" height="44">
+      <span>EC Home Inspections</span>
+    </div>
+    <nav>
+      <a href="#book">Book</a>
+      <a href="#services">Services</a>
+      <a href="#report">Your Report</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="phone-link" href="tel:+13615550100">(361) 555-0100</a>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="wrap hero-inner">
+    <h1>Know your home before you buy it.</h1>
+    <p>Professional, TREC-licensed home inspections serving Sinton, Corpus Christi, and the Coastal Bend.</p>
+    <a class="btn btn-primary" href="#book">Schedule Your Inspection</a>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <h2>Book online in minutes</h2>
+    <span class="section-rule"></span>
+    <form>
+      <div class="field">
+        <label for="book-address">Property address</label>
+        <input id="book-address" type="text" name="address" autocomplete="street-address">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="book-date">Preferred date</label>
+          <input id="book-date" type="date" name="date">
+        </div>
+        <div class="field">
+          <label for="book-time">Preferred time</label>
+          <select id="book-time" name="time">
+            <option>Morning</option>
+            <option>Afternoon</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row cols-3">
+        <div class="field">
+          <label for="book-name">Your name</label>
+          <input id="book-name" type="text" name="name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="book-phone">Phone</label>
+          <input id="book-phone" type="tel" name="phone" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="book-email">Email</label>
+          <input id="book-email" type="email" name="email" autocomplete="email">
+        </div>
+      </div>
+      <button type="button" class="btn btn-secondary">Request Appointment</button>
+    </form>
+    <p class="note">You&rsquo;ll receive a confirmation within one business day.</p>
+  </div>
+</section>
+
+<section id="services" class="alt">
+  <div class="wrap">
+    <h2>What&rsquo;s inspected</h2>
+    <span class="section-rule"></span>
+    <p>Every inspection covers all components in the TREC Standards of Practice:</p>
+    <ul class="service-list">
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Foundation</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Grading &amp; Drainage</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Roof Covering</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Roof Structure &amp; Attics</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Walls</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Doors &amp; Windows</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Floors &amp; Ceilings</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>HVAC</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Electrical</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Plumbing</li>
+      <li><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Built-In Appliances</li>
+    </ul>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <span class="section-rule"></span>
+    <ol class="steps">
+      <li>
+        <span class="step-circle" aria-hidden="true">1</span>
+        <p><strong>Book</strong> &mdash; Pick a day and time that works for you.</p>
+      </li>
+      <li>
+        <span class="step-circle" aria-hidden="true">2</span>
+        <p><strong>Inspect</strong> &mdash; Edna walks the property top to bottom, typically 2&ndash;3 hours.</p>
+      </li>
+      <li>
+        <span class="step-circle" aria-hidden="true">3</span>
+        <p><strong>Report</strong> &mdash; Your full digital report, usually within 24 hours.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="report">
+  <div class="wrap">
+    <h2>Already had your inspection?</h2>
+    <span class="section-rule on-dark"></span>
+    <p>Access your report online any time.</p>
+    <form>
+      <div class="field">
+        <label for="report-email">Email address</label>
+        <input id="report-email" type="email" name="email" autocomplete="email">
+      </div>
+      <button type="button" class="btn btn-primary">Find My Report</button>
+    </form>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Meet Edna Cavazos</h2>
+    <span class="section-rule"></span>
+    <div class="about-grid">
+      <p>EC Home Inspections is owned and operated by Edna Cavazos, a TREC-licensed
+      professional inspector (License #27120) serving Sinton and the greater Coastal
+      Bend. When you book with EC, Edna is who shows up &mdash; no subcontractors, no
+      hand-offs, and a report you can actually read.</p>
+      <svg class="seal" viewBox="0 0 200 200" role="img" aria-label="TREC licensed seal, license number 27120">
+        <circle cx="100" cy="100" r="92" fill="#0F2038"/>
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#F97316" stroke-width="4"/>
+        <circle cx="100" cy="100" r="76" fill="none" stroke="#7EB0F2" stroke-width="1.5"/>
+        <text x="100" y="66" text-anchor="middle" fill="#C9D6E8" font-family="-apple-system, sans-serif" font-size="12" letter-spacing="2">TREC LICENSED</text>
+        <text x="100" y="108" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, sans-serif" font-size="28" font-weight="700">#27120</text>
+        <text x="100" y="140" text-anchor="middle" fill="#C9D6E8" font-family="-apple-system, sans-serif" font-size="11" letter-spacing="1.5">SINTON &middot; COASTAL BEND</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="alt">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <span class="section-rule"></span>
+    <form>
+      <div class="field-row contact-row">
+        <div class="field">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" type="text" name="name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" type="email" name="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="contact-phone">Phone</label>
+          <input id="contact-phone" type="tel" name="phone" autocomplete="tel">
+        </div>
+      </div>
+      <div class="field">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message"></textarea>
+      </div>
+      <button type="button" class="btn btn-secondary">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><span class="foot-brand">EC Home Inspections</span> &middot; 10577 CR 2349, Sinton, TX</div>
+    <div>(361) 555-0100 &middot; edna@echomeinspectionstx.com</div>
+    <div>Texas Real Estate Commission License #27120</div>
+    <div><a href="https://www.trec.texas.gov/forms/consumer-protection-notice">TREC Consumer Protection Notice</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
