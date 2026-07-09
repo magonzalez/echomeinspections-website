@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EC Home Inspections &mdash; Book It Now Concept</title>
+<style>
+  :root{
+    --navy:#0F2A52;
+    --navy-soft:#173B6E;
+    --blue:#1E6FD9;
+    --blue-pale:#E4EDFB;
+    --orange:#F97316;
+    --orange-hover:#E0630C;
+    --bg:#FFFFFF;
+    --bg-alt:#F4F7FB;
+    --ink:#16233B;
+    --ink-muted:#54627A;
+    --line:#DEE6F2;
+    --radius:8px;
+    --font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font);
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2{
+    font-family:var(--font);
+    color:var(--navy);
+    margin:0;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0 0 1em;color:var(--ink-muted);}
+  a{color:var(--blue);}
+  ul,ol{margin:0;padding:0;}
+  li{list-style:none;}
+  button{font-family:inherit;}
+  img{max-width:100%;display:block;}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--orange);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition-duration:0.001ms !important;}
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* Header */
+  header{
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    position:relative;
+    z-index:5;
+  }
+  header .wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    padding-top:16px;
+    padding-bottom:16px;
+    text-align:center;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    max-width:100%;
+  }
+  .logo{width:34px;height:auto;flex:none;}
+  .brand span{
+    font-weight:800;
+    font-size:1.1rem;
+    color:var(--navy);
+    letter-spacing:-0.01em;
+  }
+  header nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px 20px;
+    justify-content:center;
+    padding-top:10px;
+    border-top:1px solid var(--line);
+    width:100%;
+    max-width:100%;
+  }
+  header nav a{
+    color:var(--navy);
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:600;
+    padding:8px 2px;
+    border-bottom:2px solid transparent;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  header nav a:hover, header nav a:focus-visible{
+    color:var(--blue);
+    border-color:var(--orange);
+  }
+  header .phone-link{
+    color:var(--orange);
+    font-weight:800;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  header .phone-link:hover{text-decoration:underline;}
+
+  @media (min-width:640px){
+    header .wrap{
+      flex-direction:row;
+      justify-content:space-between;
+      text-align:left;
+      flex-wrap:wrap;
+    }
+    header nav{
+      order:2;
+      width:auto;
+      border-top:none;
+      padding-top:0;
+    }
+  }
+
+  /* Buttons: orange for every primary action */
+  .btn{
+    display:inline-block;
+    font-family:var(--font);
+    font-weight:700;
+    font-size:1rem;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    cursor:pointer;
+    background:var(--orange);
+    color:#fff;
+    box-shadow:0 4px 12px rgba(249,115,22,0.28);
+    transition:background-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  .btn:hover{
+    background:var(--orange-hover);
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(249,115,22,0.34);
+  }
+  .btn-block{display:block;width:100%;text-align:center;}
+
+  /* Hero */
+  #hero{
+    background:linear-gradient(135deg,#0F2A52,#1E6FD9);
+    position:relative;
+    color:#fff;
+    padding:76px 0 210px;
+    overflow:hidden;
+  }
+  #hero::after{
+    content:"";
+    position:absolute;
+    top:-120px;
+    right:-140px;
+    width:480px;
+    height:480px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,0.10), rgba(255,255,255,0) 68%);
+    pointer-events:none;
+  }
+  #hero .hero-inner{
+    position:relative;
+    max-width:600px;
+  }
+  #hero h1{
+    color:#fff;
+    font-size:clamp(1.9rem, 4.6vw, 2.9rem);
+    line-height:1.15;
+    margin-bottom:18px;
+  }
+  #hero p{
+    color:#D6E3F8;
+    font-size:1.12rem;
+    max-width:50ch;
+    margin-bottom:28px;
+  }
+
+  /* Generic section rhythm */
+  section{padding:64px 0;}
+  section.alt{background:var(--bg-alt);}
+  section h2{
+    font-size:clamp(1.5rem, 3vw, 1.95rem);
+  }
+  section > .wrap > p.lede{max-width:60ch;}
+
+  /* Book: signature move — card pulled up into the hero */
+  #book{padding-top:0;padding-bottom:72px;background:var(--bg);position:relative;z-index:3;}
+  .book-card{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 30px 60px rgba(15,42,82,0.30), 0 6px 16px rgba(15,42,82,0.12);
+    padding:36px;
+    max-width:880px;
+    margin:-170px auto 0;
+  }
+  .book-card h2{margin-bottom:6px;}
+  .book-card > p.lede{margin-bottom:24px;}
+
+  form{margin:0;}
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;
+    font-size:0.86rem;
+    color:var(--navy);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    font-family:inherit;
+    font-size:1rem;
+    padding:11px 13px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:#fff;
+    color:var(--ink);
+  }
+  .field textarea{resize:vertical;min-height:110px;}
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .field-span2{grid-column:1 / -1;}
+  @media (min-width:560px){
+    .field-row{grid-template-columns:1fr 1fr;}
+  }
+  form .note{margin-top:16px;margin-bottom:0;font-size:0.92rem;}
+
+  /* #report dark form fields readability */
+  #report .field input{background:#fff;color:var(--ink);}
+
+  @media (max-width:640px){
+    #hero{padding:64px 0 110px;}
+    .book-card{margin-top:-70px;padding:26px;}
+  }
+
+  /* Services: compact chip grid */
+  .chip-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:10px;
+  }
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--blue-pale);
+    border:1px solid #CBDBF5;
+    border-radius:999px;
+    padding:10px 18px 10px 14px;
+    font-weight:700;
+    color:var(--navy);
+    font-size:0.94rem;
+  }
+  .check-icon{width:16px;height:16px;flex:none;color:var(--orange);}
+
+  /* How it works: numbered tiles */
+  .tiles{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+    margin-top:12px;
+  }
+  @media (min-width:720px){
+    .tiles{grid-template-columns:1fr 1fr 1fr;}
+  }
+  .tile{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:28px 24px;
+    box-shadow:0 3px 10px rgba(15,42,82,0.06);
+  }
+  .tile-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:38px;
+    height:38px;
+    border-radius:9px;
+    background:var(--navy);
+    color:#fff;
+    font-weight:800;
+    font-size:1.05rem;
+    margin-bottom:14px;
+  }
+  .tile p{margin:0;color:var(--ink-muted);}
+  .tile strong{color:var(--navy);}
+
+  /* Report: navy panel */
+  #report{
+    background:var(--navy);
+    color:#fff;
+  }
+  #report h2{color:#fff;}
+  #report p.lede{color:#C6D6F0;}
+  #report .field label{color:#EAF1FC;}
+  #report form{max-width:520px;}
+
+  /* About: credential panel */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+    align-items:center;
+  }
+  @media (min-width:760px){
+    .about-grid{grid-template-columns:1fr 340px;}
+  }
+  .credential-card{
+    background:#fff;
+    border-left:6px solid var(--orange);
+    border-radius:8px;
+    padding:32px;
+    box-shadow:0 4px 18px rgba(15,42,82,0.08);
+  }
+  .credential-card h2{margin-bottom:6px;}
+  .credential-card p{max-width:60ch;margin-bottom:0;}
+  .cred-badge{
+    background:rgba(249,115,22,0.14);
+    color:var(--orange-hover);
+    font-weight:800;
+    padding:1px 6px;
+    border-radius:4px;
+  }
+  .about-photo img{
+    width:100%;
+    height:auto;
+    border-radius:8px;
+    display:block;
+  }
+
+  /* Contact */
+  #contact .field-row.contact-row{grid-template-columns:1fr;}
+  @media (min-width:560px){
+    #contact .field-row.contact-row{grid-template-columns:1fr 1fr 1fr;}
+  }
+
+  /* Footer */
+  footer{
+    background:var(--navy);
+    color:#C6D6F0;
+    border-top:4px solid var(--orange);
+    padding:40px 0 44px;
+    text-align:center;
+    font-size:0.92rem;
+  }
+  footer .wrap > *{margin-bottom:8px;}
+  footer .wrap > *:last-child{margin-bottom:0;}
+  footer a{color:var(--orange);font-weight:700;}
+  footer .foot-brand{
+    color:#fff;
+    font-size:1.05rem;
+    font-weight:800;
+  }
+
+  @media (max-width:374px){
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable check glyph, referenced via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5 L9.5 18 L20 6"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img class="logo" src="assets/logo.svg" alt="" aria-hidden="true" width="48" height="44">
+      <span>EC Home Inspections</span>
+    </div>
+    <nav>
+      <a href="#book">Book</a>
+      <a href="#services">Services</a>
+      <a href="#report">Your Report</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="phone-link" href="tel:+13615550100">(361) 555-0100</a>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="wrap hero-inner">
+    <h1>Know your home before you buy it.</h1>
+    <p>Professional, TREC-licensed home inspections serving Sinton, Corpus Christi, and the Coastal Bend.</p>
+    <a class="btn" href="#book">Schedule Your Inspection</a>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="book-card">
+      <h2>Book online in minutes</h2>
+      <form>
+        <div class="field">
+          <label for="book-address">Property address</label>
+          <input id="book-address" type="text" name="address" autocomplete="street-address">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="book-date">Preferred date</label>
+            <input id="book-date" type="date" name="date">
+          </div>
+          <div class="field">
+            <label for="book-time">Preferred time</label>
+            <select id="book-time" name="time">
+              <option>Morning</option>
+              <option>Afternoon</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="book-name">Your name</label>
+            <input id="book-name" type="text" name="name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="book-phone">Phone</label>
+            <input id="book-phone" type="tel" name="phone" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="book-email">Email</label>
+          <input id="book-email" type="email" name="email" autocomplete="email">
+        </div>
+        <button type="button" class="btn btn-block">Request Appointment</button>
+      </form>
+      <p class="note">You&rsquo;ll receive a confirmation within one business day.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="alt">
+  <div class="wrap">
+    <h2>What&rsquo;s inspected</h2>
+    <p class="lede">Every inspection covers all components in the TREC Standards of Practice:</p>
+    <ul class="chip-grid">
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Foundation</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Grading &amp; Drainage</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Roof Covering</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Roof Structure &amp; Attics</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Walls</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Doors &amp; Windows</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Floors &amp; Ceilings</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>HVAC</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Electrical</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Plumbing</li>
+      <li class="chip"><svg class="check-icon" aria-hidden="true"><use href="#icon-check"/></svg>Built-In Appliances</li>
+    </ul>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <ol class="tiles">
+      <li class="tile"><span class="tile-num">1</span><p><strong>Book</strong> — Pick a day and time that works for you.</p></li>
+      <li class="tile"><span class="tile-num">2</span><p><strong>Inspect</strong> — Edna walks the property top to bottom, typically 2&ndash;3 hours.</p></li>
+      <li class="tile"><span class="tile-num">3</span><p><strong>Report</strong> — Your full digital report, usually within 24 hours.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="report">
+  <div class="wrap">
+    <h2>Already had your inspection?</h2>
+    <p class="lede">Access your report online any time.</p>
+    <form>
+      <div class="field">
+        <label for="report-email">Email address</label>
+        <input id="report-email" type="email" name="email" autocomplete="email">
+      </div>
+      <button type="button" class="btn">Find My Report</button>
+    </form>
+  </div>
+</section>
+
+<section id="about" class="alt">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="credential-card">
+        <h2>Meet Edna Cavazos</h2>
+        <p>EC Home Inspections is owned and operated by Edna Cavazos, a TREC-licensed
+        professional inspector <strong class="cred-badge">(License #27120)</strong> serving Sinton and the greater Coastal
+        Bend. When you book with EC, Edna is who shows up &mdash; no subcontractors, no
+        hand-offs, and a report you can actually read.</p>
+      </div>
+      <div class="about-photo">
+        <img src="assets/photo06.jpg" alt="Stone-and-siding ranch-style home exterior in daylight" width="1100" height="733">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <form>
+      <div class="field-row contact-row">
+        <div class="field">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" type="text" name="name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" type="email" name="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="contact-phone">Phone</label>
+          <input id="contact-phone" type="tel" name="phone" autocomplete="tel">
+        </div>
+      </div>
+      <div class="field">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message"></textarea>
+      </div>
+      <button type="button" class="btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><span class="foot-brand">EC Home Inspections</span> &middot; 10577 CR 2349, Sinton, TX</div>
+    <div>(361) 555-0100 &middot; edna@echomeinspectionstx.com</div>
+    <div>Texas Real Estate Commission License #27120</div>
+    <div><a href="https://www.trec.texas.gov/forms/consumer-protection-notice">TREC Consumer Protection Notice</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
