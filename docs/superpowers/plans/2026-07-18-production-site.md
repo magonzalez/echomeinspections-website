@@ -330,7 +330,9 @@ for p in site/thanks.html site/404.html site/robots.txt site/sitemap.xml \
   [ -f "$p" ] || { echo "MISSING $p"; fail=1; }
 done
 if grep -E 'src="https?://|<link[^>]+href="https?://|url\(["'"'"']?https?://|@import' site/*.html \
-   | grep -v 'api.web3forms.com' ; then echo "EXTERNAL ASSET FOUND"; fail=1; fi
+   | grep -v 'api.web3forms.com' | grep -v 'rel="canonical"' ; then echo "EXTERNAL ASSET FOUND"; fail=1; fi
+# rel="canonical" is exempt: it is SEO metadata pointing at our own domain,
+# not a network-loaded asset.
 [ "$fail" -eq 0 ] && echo "OK: production site"
 exit $fail
 ```
