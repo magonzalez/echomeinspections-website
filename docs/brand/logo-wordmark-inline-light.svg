@@ -1,0 +1,8 @@
+<svg viewBox="0 0 640 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EC Home Inspections">
+  <g transform="translate(0 4)">
+    <path fill="#1E6FD9" d="M48 4 L10 26 L10 84 L48 84 L48 72 L22 72 L22 56 L42 56 L42 44 L22 44 L22 32 L48 17 Z"/>
+    <path fill="#F97316" d="M48 4 L86 26 L86 44 L74 44 L74 33 L72 32 L72 25 L62 25 L62 26 L48 17 Z M48 72 L74 72 L74 56 L86 56 L86 84 L48 84 Z"/>
+  </g>
+  <text x="112" y="61" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="40" font-weight="800" letter-spacing="0.2">EC HOME</text>
+  <text x="320" y="61" fill="#AFC0D8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="40" font-weight="650" letter-spacing="0.2">INSPECTIONS</text>
+</svg>
