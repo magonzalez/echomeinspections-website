@@ -18,9 +18,14 @@ reachable as an archive.
   Web3Forms for all forms. Free tiers; no new platforms.
 - **Inspection software:** still undecided → booking stays a request form;
   report access is an explainer + re-send request form. No fake portals.
-- **Real contact info:** phone `(361) 558-6496`
-  (`tel:+13615586496`), email `ecavazos30@yahoo.com`. These replace the
-  placeholders everywhere on the production site (mockups keep placeholders).
+- **Real contact info:** phone `(361) 558-6496` (`tel:+13615586496`).
+  Displayed email: `edna@echomeinspectionstx.com` (Cloudflare Email Routing
+  forwards it to Edna's inbox `ecavazos30@yahoo.com`; set up 2026-07-18 —
+  DNS moved from Turbify to Cloudflare). Web3Forms submissions deliver
+  directly to `ecavazos30@yahoo.com`. These replace the placeholders
+  everywhere on the production site (mockups keep placeholders). Launch
+  prerequisite: the forwarding address must be verified working before the
+  site goes live with it.
 - **Domain:** echomeinspectionstx.com is registered; the developer has DNS
   access and will add the records.
 
