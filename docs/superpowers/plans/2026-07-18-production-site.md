@@ -78,7 +78,7 @@ def run_text(font_path, text, x, y, size, letter_spacing):
     paths, cursor = [], x
     for ch in text:
         if ch == ' ':
-            cursor += glyph_set[cmap['n']].width * scale * 0.55  # word space ~ n-width*0.55
+            cursor += glyph_set[cmap[ord('n')]].width * scale * 0.55  # word space ~ n-width*0.55
             continue
         gname = cmap[ord(ch)]
         glyph = glyph_set[gname]
